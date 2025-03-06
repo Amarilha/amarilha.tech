@@ -13,29 +13,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Cor de fundo opcional */
+    background-color: #313131; /* Cor de fundo opcional */
 }
-
-
-
 
   .content {
     text-align: center;
     transition: 0.2s ease-in-out;
-  }
-
-  @keyframes anim {
-    0% {
-      transform: translateY(0);
-    }
-  
-    50% {
-      transform: translateY(-20px);
-    }
-  
-    100% {
-      transform: translateY(0);
-    }
   }
   
   .card:hover {
@@ -44,16 +27,16 @@
   
   @keyframes autoRun3d {
     from {
-      transform: perspective(900px) rotateX(-20deg) rotateY(-360deg);
+      transform: perspective(900px) rotateX(var(--rotateX)) rotateY(-360deg) ;
     }
     to {
-      transform: perspective(900px) rotateX(-20deg)rotateY(0deg);
+      transform: perspective(900px) rotateX(var(--rotateX))rotateY(0deg) ;
     }
   }
-  
+
   @keyframes animateBrightness {
     10% {
-      filter: brightness(1);
+      filter: brightness(1); 
     }
     50% {
       filter: brightness(0.1);
@@ -71,19 +54,17 @@
     transform: perspective(800px);
     animation: autoRun3d 20s linear infinite;
     will-change: transform;
-    
-   
   }
   
   .card-3d div {
     position: absolute;
     width: 195px;
-    height: 85px;
-    background-color: #313131;
-    border: solid 2px lightgray;
+    height: 80px;
+    background-color: #CA9801;
     border-radius: 0.6rem;
     top: 50%;
     left: 50%;
+    z-index: -1;
     transform-origin: center center;
     animation: animateBrightness 20s linear infinite;
     transition-duration: 200ms;
@@ -105,7 +86,9 @@
   
   :root {
 
-    --translateZ: 500px;
+    --translateZ: 600px;
+    --rotateX: -5deg;
+    --perspective: 900px;
 }
 
 
@@ -158,4 +141,37 @@
     transform: translate(-50%, -50%) rotateY(324deg) translateZ(var(--translateZ));
     animation-delay: -18s;
   }
+  
+  .card {
+    transition: .4s;
+    overflow: hidden;
+    color: white;
+    z-index: 2;
+  }
+  
+  .card:hover {
+    height: 125px;
+    z-index: 2;
+    transform: skew(0deg);
+  }
+  
+  .align {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-self: flex-start;
+  }
+
+  .logo {
+    position: absolute;
+    top: 120px; /* Ajuste a posição vertical */
+    width: 500px; /* Ajuste o tamanho do logo */
+
+
+}
+ 
+  
+
+
   
